@@ -134,7 +134,7 @@ export function getParagraphsDiff(
       modifiedEndIndex
     );
 
-    const diff = getTextsDiff(original, modified);
+    const diff = null; // Paragraphs are not modified — this was checked earlier
 
     if (originalIndex === modifiedIndex) {
       break;
