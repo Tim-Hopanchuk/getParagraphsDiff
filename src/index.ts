@@ -6,6 +6,14 @@ interface TextsDiff {
   modifiedDiffSequence: string;
 }
 
+/**
+ * Compares two texts and detects difference at the character level.
+ * 
+ * @param {string} original - The first text
+ * @param {string} modified - The second text
+ * @returns {TextsDiff | null} - An object containing the index of the first differing character and the differing substrings from both texts, or null if texts are identical.
+ */
+
 export function getTextsDiff(
   original: string, // Original text
   modified: string // Modified text
@@ -52,6 +60,14 @@ interface ParagraphsDiff {
 
   diff: TextsDiff | null;
 }
+
+/**
+ * Compares two texts and detects difference at the paragraph level.
+ * 
+ * @param {string} original - The first text
+ * @param {string} modified - The second text
+ * @returns {ParagraphsDiff[]} - An array of objects containing the differing paragraphs, their offsets and paragraphs difference at the character level, or [] if no differences are found.
+ */
 
 export function getParagraphsDiff(
   original: string, // Original paragraphs
@@ -156,6 +172,15 @@ export function getParagraphsDiff(
 
   return result;
 }
+
+/**
+ * Finds the paragraph offset within the full text.
+ * Assumes paragraphs are joined by a single newline character.
+ * 
+ * @param {string[]} paragraphs - An array of paragraphs
+ * @param {number} end - The index of the paragraph to calculate offset for.
+ * @returns {number} - The offset.
+ */
 
 function getParagraphOffset(paragraphs: string[], end: number): number {
   let result = 0;
